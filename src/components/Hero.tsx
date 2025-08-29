@@ -1,0 +1,88 @@
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Brain, Target, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const Hero = () => {
+  return (
+    <section className="gradient-hero min-h-screen flex items-center pt-16">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Content */}
+          <div className="space-y-8 animate-fade-in">
+            <div className="space-y-4">
+              <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
+                Il Tuo Partner per
+                <span className="block text-primary">l'Evoluzione Digitale</span>
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Trasformiamo le aziende attraverso l'intelligenza artificiale e la formazione digitale. 
+                Dalla strategia all'implementazione, ti accompagniamo verso il futuro.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/percorsi">
+                  Scopri il Percorso
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/contatti">Prenota Demo Gratuita</Link>
+              </Button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 pt-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">200+</div>
+                <div className="text-sm text-muted-foreground">Aziende Servite</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">95%</div>
+                <div className="text-sm text-muted-foreground">Tasso di Successo</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">300%</div>
+                <div className="text-sm text-muted-foreground">ROI Medio</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Visual Elements */}
+          <div className="relative animate-slide-up">
+            <div className="grid grid-cols-2 gap-6">
+              <div className="space-y-6">
+                <div className="bg-card p-6 rounded-xl shadow-lg hover-lift">
+                  <Brain className="h-12 w-12 text-primary mb-4" />
+                  <h3 className="font-semibold text-lg mb-2">AI Academy</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Formazione completa sull'intelligenza artificiale
+                  </p>
+                </div>
+                <div className="bg-card p-6 rounded-xl shadow-lg hover-lift">
+                  <Zap className="h-12 w-12 text-secondary mb-4" />
+                  <h3 className="font-semibold text-lg mb-2">AI Sprint</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Implementazione rapida e misurabile
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-6 pt-12">
+                <div className="bg-card p-6 rounded-xl shadow-lg hover-lift">
+                  <Target className="h-12 w-12 text-primary mb-4" />
+                  <h3 className="font-semibold text-lg mb-2">Launchpad</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Il tuo trampolino verso l'innovazione
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
