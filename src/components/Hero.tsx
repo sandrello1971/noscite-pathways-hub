@@ -22,8 +22,8 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/percorsi">
-                  Scopri il Percorso
+                <Link to="/servizi">
+                  Scopri i Servizi
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
