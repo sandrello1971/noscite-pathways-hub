@@ -69,6 +69,7 @@ export type Database = {
           messages: Json
           session_id: string
           updated_at: string
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -76,6 +77,7 @@ export type Database = {
           messages?: Json
           session_id: string
           updated_at?: string
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -83,6 +85,7 @@ export type Database = {
           messages?: Json
           session_id?: string
           updated_at?: string
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -221,6 +224,10 @@ export type Database = {
       l2_normalize: {
         Args: { "": string } | { "": unknown } | { "": unknown }
         Returns: unknown
+      }
+      set_session_context: {
+        Args: { session_id_param: string }
+        Returns: undefined
       }
       sparsevec_out: {
         Args: { "": unknown }
