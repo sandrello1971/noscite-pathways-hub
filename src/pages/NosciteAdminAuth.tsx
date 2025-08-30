@@ -132,6 +132,53 @@ export default function NosciteAdminAuth() {
     }
   };
 
+  const handleSignUp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    
+    if (!validateEmail(email)) {
+      setError("Inserisci un indirizzo email valido");
+      return;
+    }
+    
+    if (!validatePassword(password)) {
+      setError("La password deve contenere almeno 6 caratteri");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/nosciteadmin/auth`
+        }
+      });
+
+      if (error) {
+        if (error.message.includes("User already registered")) {
+          setError("Utente già registrato. Prova ad accedere.");
+        } else {
+          setError(error.message);
+        }
+        return;
+      }
+
+      if (data.user) {
+        toast({
+          title: "Registrazione effettuata",
+          description: "Controlla la tua email per confermare l'account.",
+        });
+      }
+    } catch (err) {
+      setError("Si è verificato un errore imprevisto. Riprova più tardi.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/20 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -159,50 +206,106 @@ export default function NosciteAdminAuth() {
               </Alert>
             )}
 
-            <form onSubmit={handleSignIn} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="admin-email">Email Amministratore</Label>
-                <Input
-                  id="admin-email"
-                  type="email"
-                  placeholder="admin@noscite.it"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  autoComplete="email"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="admin-password">Password</Label>
-                <div className="relative">
-                  <Input
-                    id="admin-password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Inserisci la password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    autoComplete="current-password"
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
-                    ) : (
-                      <Eye className="h-4 w-4" />
-                    )}
+            <Tabs defaultValue="signin" className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="signin">Accedi</TabsTrigger>
+                <TabsTrigger value="signup">Registrati</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="signin">
+                <form onSubmit={handleSignIn} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="signin-email">Email Amministratore</Label>
+                    <Input
+                      id="signin-email"
+                      type="email"
+                      placeholder="admin@noscite.it"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="signin-password">Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="signin-password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Inserisci la password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        autoComplete="current-password"
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                  <Button type="submit" className="w-full" disabled={loading}>
+                    {loading ? "Accesso in corso..." : "Accedi"}
                   </Button>
-                </div>
-              </div>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Accesso in corso..." : "Accedi"}
-              </Button>
-            </form>
+                </form>
+              </TabsContent>
+
+              <TabsContent value="signup">
+                <form onSubmit={handleSignUp} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-email">Email Amministratore</Label>
+                    <Input
+                      id="signup-email"
+                      type="email"
+                      placeholder="admin@noscite.it"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-password">Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="signup-password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Crea una password (min. 6 caratteri)"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        autoComplete="new-password"
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                  <Button type="submit" className="w-full" disabled={loading}>
+                    {loading ? "Registrazione in corso..." : "Registrati"}
+                  </Button>
+                </form>
+              </TabsContent>
+            </Tabs>
 
             <div className="mt-6 text-center text-sm text-muted-foreground">
               <p>Area riservata agli amministratori di Noscite</p>
