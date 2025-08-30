@@ -187,6 +187,7 @@ const BlogEditor = ({ post, onSave, onCancel }: BlogEditorProps) => {
                   <Label>Contenuto *</Label>
                   <div className="mt-2">
                     <Editor
+                      apiKey="hhhxgf8ved2ogrhp8q2c8c3piiofusg5dextxiawl3t07pm9"
                       onInit={(evt, editor) => editorRef.current = editor}
                       value={formData.content}
                       onEditorChange={(content) => setFormData(prev => ({ ...prev, content }))}
