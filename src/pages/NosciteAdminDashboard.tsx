@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import BlogEditor from "@/components/BlogEditor";
 import DocumentManager from "@/components/DocumentManager";
+import UserManager from "@/components/UserManager";
 
 export default function NosciteAdminDashboard() {
   const { user, loading: authLoading, isAdmin, signOut } = useAuth();
@@ -285,9 +286,10 @@ export default function NosciteAdminDashboard() {
       {/* Main Content */}
       <div className="container mx-auto px-4 lg:px-8 py-8">
         <Tabs defaultValue="blog" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="blog">Gestione Blog</TabsTrigger>
             <TabsTrigger value="documents">Gestione Documenti</TabsTrigger>
+            <TabsTrigger value="users">Gestione Utenti</TabsTrigger>
           </TabsList>
 
           {/* Blog Management */}
@@ -376,6 +378,14 @@ export default function NosciteAdminDashboard() {
           {/* Documents Management */}
           <TabsContent value="documents" className="space-y-6">
             <DocumentManager onDocumentChange={loadDocuments} />
+          </TabsContent>
+
+          {/* Users Management */}
+          <TabsContent value="users" className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold">Gestione Utenti</h2>
+            </div>
+            <UserManager />
           </TabsContent>
         </Tabs>
       </div>

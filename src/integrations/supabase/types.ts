@@ -217,6 +217,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      assign_admin_role_to_user: {
+        Args: { user_email: string }
+        Returns: undefined
+      }
       binary_quantize: {
         Args: { "": string } | { "": unknown }
         Returns: unknown
