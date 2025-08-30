@@ -10,7 +10,9 @@ import Percorsi from "./pages/Percorsi";
 import Risorse from "./pages/Risorse";
 import Contatti from "./pages/Contatti";
 import AdminDashboard from "./pages/AdminDashboard";
+import NosciteAdminDashboard from "./pages/NosciteAdminDashboard";
 import Auth from "./pages/Auth";
+import NosciteAdminAuth from "./pages/NosciteAdminAuth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +30,8 @@ const App = () => (
           <Route path="/percorsi" element={<Percorsi />} />
           <Route path="/risorse" element={<Risorse />} />
           <Route path="/contatti" element={<Contatti />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/nosciteadmin" element={<NosciteAdminDashboard />} />
+          <Route path="/nosciteadmin/auth" element={<NosciteAdminAuth />} />
           <Route path="/auth" element={<Auth />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

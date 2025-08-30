@@ -68,28 +68,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Auth buttons for desktop */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {user ? (
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="sm" asChild>
-                  <Link to="/admin-dashboard">
-                    <User className="h-4 w-4 mr-2" />
-                    Dashboard
-                  </Link>
-                </Button>
-                <Button variant="outline" size="sm" onClick={handleSignOut}>
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Sign Out
-                </Button>
-              </div>
-            ) : (
-              <Button variant="outline" asChild>
-                <Link to="/auth">Sign In</Link>
-              </Button>
-            )}
-          </div>
-
           {/* Mobile menu button */}
           <button
             className="lg:hidden p-2"
@@ -118,37 +96,6 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              
-              {/* Auth buttons for mobile */}
-              <div className="mt-6 pt-6 border-t border-border">
-                {user ? (
-                  <div className="space-y-2">
-                    <Button variant="ghost" className="w-full justify-start" asChild>
-                      <Link to="/admin-dashboard" onClick={() => setIsMenuOpen(false)}>
-                        <User className="h-4 w-4 mr-2" />
-                        Dashboard
-                      </Link>
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      className="w-full justify-start" 
-                      onClick={() => {
-                        handleSignOut();
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      <LogOut className="h-4 w-4 mr-2" />
-                      Sign Out
-                    </Button>
-                  </div>
-                ) : (
-                  <Button variant="outline" className="w-full" asChild>
-                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
-                      Sign In
-                    </Link>
-                  </Button>
-                )}
-              </div>
             </nav>
           </div>
         )}
