@@ -11,21 +11,24 @@ const Servizi = () => {
       id: "academy",
       icon: BookOpen,
       title: "AI Academy",
-      subtitle: "Formazione Completa sull'Intelligenza Artificiale",
-      description: "Programma formativo strutturato per portare il tuo team dalle basi dell'AI all'implementazione pratica di soluzioni enterprise.",
-      duration: "3-6 mesi",
-      price: "A partire da €5.000",
+      subtitle: "Digital Productivity Transformation per PMI",
+      description: "Percorso formativo completo di 68 ore diviso in 3 corsi sequenziali: Intelligenza Artificiale Operativa, Second Brain in Azienda e Collaborazione Intelligente. Progettato per PMI che vogliono trasformare la produttività attraverso AI, knowledge management e strumenti di collaborazione digitale.",
+      duration: "6-8 mesi",
+      price: "A partire da €12.000",
       features: [
-        "Corsi certificati su ML, Deep Learning, NLP",
-        "Workshop pratici con progetti reali",
-        "Community esclusiva di professionisti",
-        "Follow-up personalizzato per 6 mesi",
-        "Certificazioni riconosciute dal mercato"
+        "Corso 1: IA Operativa (20h) - ChatGPT e Copilot 365",
+        "Corso 2: Second Brain (24h) - Knowledge management con Obsidian",
+        "Corso 3: Collaborazione Intelligente (24h) - Teams, Trello, Asana, Slack",
+        "Max 12 partecipanti per corso",
+        "Certificazioni: AI Productivity User, Second Brain Implementer, Collaboration Tools User",
+        "Follow-up ROI a 3 mesi per ogni corso",
+        "Community alumni e webinar trimestrali"
       ],
       benefits: [
-        "Team autonomo nell'AI",
-        "Riduzione costi consulenza esterna",
-        "Innovazione interna accelerata"
+        "Riduzione 40-70% tempo attività ripetitive",
+        "ROI medio +300% in 12 mesi",
+        "Team autonomo e produttivo",
+        "Processi digitalizzati e scalabili"
       ]
     },
     {
