@@ -25,8 +25,8 @@ const Servizi = () => {
         "Community alumni e webinar trimestrali"
       ],
       benefits: [
-        "Riduzione 40-70% tempo attività ripetitive",
-        "ROI medio +300% in 12 mesi",
+        "Riduzione significativa tempo attività ripetitive",
+        "Miglioramento produttività team",
         "Team autonomo e produttivo",
         "Processi digitalizzati e scalabili"
       ]

@@ -29,21 +29,6 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">200+</div>
-                <div className="text-sm text-muted-foreground">Aziende Servite</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">95%</div>
-                <div className="text-sm text-muted-foreground">Tasso di Successo</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">300%</div>
-                <div className="text-sm text-muted-foreground">ROI Medio</div>
-              </div>
-            </div>
           </div>
 
           {/* Right Column - Visual Elements */}

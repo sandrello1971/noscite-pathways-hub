@@ -26,9 +26,9 @@ const ChiSiamo = () => {
   ];
 
   const stats = [
-    { icon: Users, label: "Clienti Serviti", value: "200+" },
-    { icon: Award, label: "Progetti Completati", value: "500+" },
-    { icon: Target, label: "Tasso di Successo", value: "95%" },
+    { icon: Users, label: "Team di Esperti", value: "10+" },
+    { icon: Award, label: "Progetti Innovativi", value: "Molti" },
+    { icon: Target, label: "Focus Cliente", value: "100%" },
     { icon: Lightbulb, label: "Anni di Esperienza", value: "15+" }
   ];
 

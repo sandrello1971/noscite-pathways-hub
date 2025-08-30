@@ -18,7 +18,7 @@ const Testimonials = () => {
       rating: 5
     },
     {
-      content: "Il Fractional CIO service è stato fondamentale per definire la nostra strategia digitale. ROI del 300% nel primo anno.",
+      content: "Il supporto strategico ha trasformato la nostra visione digitale. I risultati hanno superato le nostre aspettative.",
       author: "Giuseppe Verdi",
       role: "Founder",
       company: "StartUp Innovativa",
