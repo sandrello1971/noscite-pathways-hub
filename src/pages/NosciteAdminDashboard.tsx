@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
@@ -194,10 +194,10 @@ export default function NosciteAdminDashboard() {
             </Alert>
             <div className="mt-4 space-y-2">
               <Button className="w-full" asChild>
-                <a href="/nosciteadmin/auth">Accedi</a>
+                <Link to="/nosciteadmin/auth">Accedi</Link>
               </Button>
               <Button variant="outline" className="w-full" asChild>
-                <a href="/">Torna al Sito</a>
+                <Link to="/">Torna al Sito</Link>
               </Button>
             </div>
           </CardContent>
@@ -224,7 +224,7 @@ export default function NosciteAdminDashboard() {
             </Alert>
             <div className="mt-4">
               <Button variant="outline" className="w-full" asChild>
-                <a href="/">Torna al Sito</a>
+                <Link to="/">Torna al Sito</Link>
               </Button>
             </div>
           </CardContent>
@@ -269,10 +269,10 @@ export default function NosciteAdminDashboard() {
                 {user?.email}
               </span>
               <Button variant="outline" size="sm" asChild>
-                <a href="/">
+                <Link to="/">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Sito
-                </a>
+                </Link>
               </Button>
               <Button variant="outline" size="sm" onClick={handleLogout}>
                 <LogOut className="h-4 w-4 mr-2" />
