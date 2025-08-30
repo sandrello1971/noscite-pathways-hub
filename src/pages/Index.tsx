@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
+import Chatbot from "@/components/Chatbot";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -16,6 +17,7 @@ const Index = () => {
         <Testimonials />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 };
