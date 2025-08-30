@@ -144,22 +144,6 @@ const Contatti = () => {
                 </Card>
 
                 {/* Quick Demo */}
-                <Card className="bg-primary text-primary-foreground">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <Calendar className="h-6 w-6 text-secondary" />
-                      <span>Demo Veloce</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="mb-6 opacity-90">
-                      Prenota una demo di 30 minuti per vedere in azione le nostre soluzioni AI
-                    </p>
-                    <Button variant="secondary" size="lg" className="w-full">
-                      Prenota Demo Ora
-                    </Button>
-                  </CardContent>
-                </Card>
 
                 {/* WhatsApp */}
                 <Card className="bg-[#25D366] text-white">

@@ -27,9 +27,6 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link to="/contatti">Prenota Demo Gratuita</Link>
-              </Button>
             </div>
 
             {/* Stats */}

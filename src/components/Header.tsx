@@ -40,12 +40,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex">
-            <Button variant="cta" asChild>
-              <Link to="/contatti">Prenota Demo</Link>
-            </Button>
-          </div>
 
           {/* Mobile menu button */}
           <button
@@ -75,11 +69,6 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="cta" className="self-start mt-4" asChild>
-                <Link to="/contatti" onClick={() => setIsMenuOpen(false)}>
-                  Prenota Demo
-                </Link>
-              </Button>
             </nav>
           </div>
         )}

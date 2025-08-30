@@ -242,11 +242,11 @@ const Servizi = () => {
               Pronto a Trasformare la Tua Azienda?
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Prenota una demo gratuita per scoprire quale servizio è più adatto alle tue esigenze
+              Contattaci per scoprire quale servizio è più adatto alle tue esigenze
             </p>
             <Button variant="secondary" size="lg" asChild>
               <Link to="/contatti">
-                Prenota Demo Gratuita
+                Contattaci
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
