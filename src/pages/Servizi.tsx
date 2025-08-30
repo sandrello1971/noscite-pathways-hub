@@ -35,84 +35,94 @@ const Servizi = () => {
       id: "launchpad", 
       icon: Rocket,
       title: "AI Launchpad",
-      subtitle: "Il Trampolino per la Trasformazione Digitale",
-      description: "Programma di avviamento progettato per aziende che vogliono iniziare il loro viaggio nell'AI con una strategia chiara e risultati veloci.",
-      duration: "6-8 settimane",
-      price: "€15.000 - €25.000",
+      subtitle: "Il Tuo Primo Passo nell'AI, Semplice e Rapido",
+      description: "Il pacchetto perfetto per partire subito con l'Intelligenza Artificiale nella tua attività. In poche settimane scoprirai cosa può fare l'AI per te e imparerai a usarla sul campo, con risultati tangibili e immediati.",
+      duration: "4-6 settimane",
+      price: "Forfait accessibile",
       features: [
-        "Assessment completo dell'attuale stato digitale",
-        "Roadmap strategica personalizzata",
-        "Identificazione quick wins",
-        "Primi 2 progetti pilota implementati",
-        "Setup governance AI"
+        "Assessment semplificato di processi e opportunità",
+        "Workshop operativo (½ giornata) + Corso 1 (ChatGPT & Copilot 365)",
+        "Implementazione rapida di 1 strumento AI con setup",
+        "Training on the job e formazione pratica",
+        "Roadmap iniziale con priorità definite",
+        "Supporto remoto post-lancio: 1 mese"
       ],
       benefits: [
-        "ROI visibile in 60 giorni",
-        "Strategia AI chiara e actionable",
-        "Team preparato per l'evoluzione"
+        "Risultati visibili in meno di 6 settimane",
+        "Aumento immediato della produttività",
+        "Team pronto a utilizzare l'AI in autonomia",
+        "Investimento contenuto, ROI rapido"
       ]
     },
     {
       id: "sprint",
       icon: Zap,
       title: "AI Sprint", 
-      subtitle: "Implementazione Rapida e Misurabile",
-      description: "Metodologia agile per implementare soluzioni AI specifiche con risultati tangibili e misurabili in tempi ridotti.",
-      duration: "4-12 settimane",
-      price: "€10.000 - €50.000",
+      subtitle: "Il Tuo Primo Progetto AI con KPI Misurabili",
+      description: "Pacchetto progettuale per sviluppare un caso d'uso AI ad alto impatto. Ti accompagniamo dall'analisi alla realizzazione, formando il tuo team per garantire che la soluzione venga adottata e generi valore.",
+      duration: "5-6 mesi",
+      price: "Modulare (base + opzioni)",
       features: [
-        "Metodologia sprint consolidata",
-        "KPI definiti e monitoraggio continuo",
-        "Moduli formativi integrati",
-        "Implementazione hands-on",
-        "Documentazione completa"
+        "Assessment approfondito di processi e dati",
+        "Scelta strategica del caso d'uso e definizione KPI",
+        "Progettazione e sviluppo del pilot",
+        "Formazione mirata con moduli Corso 2 e/o Corso 3",
+        "Deploy, integrazione iniziale e monitoraggio",
+        "Supporto operativo: 2 mesi post-avvio",
+        "Opzione Fractional CIO per regia strategica"
       ],
       benefits: [
-        "Time-to-market ridotto del 70%",
-        "Risultati misurabili garantiti",
-        "Competenze trasferite al team"
+        "Output tangibile (prototipo o processo AI operativo)",
+        "Adozione efficace grazie alla formazione integrata",
+        "ROI e metriche chiare già dal pilot",
+        "Riduzione rischi di progetti troppo estesi"
       ]
     },
     {
       id: "evolution",
       icon: Users,
       title: "AI Evolution Partner",
-      subtitle: "Partnership Strategica per la Trasformazione",
-      description: "Accompagnamento completo e continuativo per aziende che vogliono fare dell'AI un pilastro strategico del loro business.",
-      duration: "12+ mesi",
-      price: "€3.000 - €10.000/mese",
+      subtitle: "Il Tuo Partner AI di Fiducia, Tutto l'Anno",
+      description: "Programma annuale che ti affianca nella trasformazione digitale completa della tua azienda. Uniamo formazione continua, implementazione e governance strategica, grazie alla presenza del Fractional CIO.",
+      duration: "Contratto annuale",
+      price: "Personalizzato",
       features: [
-        "Governance AI continuativa",
-        "Formazione team ongoing",
-        "Roadmap evolutiva aggiornata",
-        "Support tecnico dedicato",
-        "Innovation scouting"
+        "Strategia AI annuale con roadmap trimestrale",
+        "Formazione completa: tutti i corsi + workshop trimestrali",
+        "Implementazione e ottimizzazione multiple soluzioni AI",
+        "Fractional CIO incluso: governance, KPI, priorità",
+        "Supporto operativo continuo e helpdesk",
+        "Revisione annuale con misurazione ROI",
+        "Piano evolutivo e strategia a lungo termine"
       ],
       benefits: [
-        "Innovazione continua e sostenibile",
-        "Competitive advantage duraturo",
-        "Team sempre aggiornato"
+        "Trasformazione digitale guidata e coerente",
+        "Team formato e autonomo",
+        "Ecosistema digitale integrato e scalabile",
+        "ROI composto e sostenibile nel tempo"
       ]
     },
     {
       id: "cio",
       icon: Settings,
       title: "Fractional CIO",
-      subtitle: "Consulenza Strategica di Alto Livello",
-      description: "Servizio di CIO part-time per guidare la strategia tecnologica e l'innovazione digitale della tua azienda.",
+      subtitle: "La Guida Strategica che Ti Mancava",
+      description: "Il tuo Chief Information Officer a tempo parziale: un esperto che ti aiuta a prendere le decisioni giuste, pianificare investimenti e garantire che la tecnologia lavori davvero per il tuo business.",
       duration: "Flessibile",
-      price: "€2.000 - €8.000/mese",
+      price: "On-demand o annuale",
       features: [
-        "Strategia IT e digital roadmap",
-        "Team building e leadership",
-        "Vendor management e partnership",
-        "Innovation roadmap",
-        "Board reporting"
+        "On-Demand: interventi spot per assessment e roadmap",
+        "Light Annuale: 1 giorno/settimana o 2 mezze giornate/mese",
+        "Integrato: incluso in AI Evolution Partner",
+        "Governance strategica e coordinamento IT-Business",
+        "Pianificazione investimenti tecnologici",
+        "Revisione progetti e mitigazione rischi"
       ],
       benefits: [
-        "Leadership tecnologica senior",
-        "Costi ridotti vs CIO full-time",
-        "Accesso a network esteso"
+        "Decisioni tecnologiche rapide e consapevoli",
+        "Roadmap digitale coerente e misurabile",
+        "Riduzione rischi e sprechi",
+        "Coordinamento ottimale IT, AI e business"
       ]
     }
   ];
