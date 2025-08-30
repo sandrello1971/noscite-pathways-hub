@@ -23,7 +23,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/b5b25fd0-a304-47db-ada5-41413f8c2da0.png" 
               alt="Noscite Logo" 
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
 

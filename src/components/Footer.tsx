@@ -37,7 +37,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/b5b25fd0-a304-47db-ada5-41413f8c2da0.png" 
                 alt="Noscite Logo" 
-                className="h-10 w-auto mb-4 brightness-0 invert"
+                className="h-16 w-auto mb-4 brightness-0 invert"
               />
               <p className="text-primary-foreground/80 leading-relaxed">
                 Il tuo partner per l'evoluzione digitale. Trasformiamo le aziende attraverso 
