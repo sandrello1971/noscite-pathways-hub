@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { 
   PlusCircle, 
   FileText, 
@@ -13,7 +16,9 @@ import {
   Edit, 
   Trash2,
   Calendar,
-  Users
+  Users,
+  Shield,
+  AlertTriangle
 } from "lucide-react";
 import BlogEditor from "@/components/BlogEditor";
 import DocumentManager from "@/components/DocumentManager";
@@ -21,37 +26,42 @@ import { BlogPost, Document } from "@/types/database";
 
 
 const AdminDashboard = () => {
-  const [user, setUser] = useState(null);
+  const { user, loading: authLoading, isAdmin, signOut } = useAuth();
   const [loading, setLoading] = useState(true);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [documents, setDocuments] = useState<Document[]>([]);
   const [showBlogEditor, setShowBlogEditor] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   useEffect(() => {
-    checkUser();
-    if (user) {
-      loadBlogPosts();
-      loadDocuments();
-    }
-  }, [user]);
-
-  const checkUser = async () => {
-    try {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) {
-        navigate('/');
+    if (!authLoading) {
+      if (!user) {
+        toast({
+          title: "Authentication Required",
+          description: "Please sign in to access the admin dashboard.",
+          variant: "destructive",
+        });
+        navigate("/auth");
         return;
       }
-      setUser(user);
-    } catch (error) {
-      console.error('Error checking user:', error);
-      navigate('/');
-    } finally {
+      
+      if (!isAdmin()) {
+        toast({
+          title: "Access Denied",
+          description: "You don't have permission to access the admin dashboard.",
+          variant: "destructive",
+        });
+        navigate("/");
+        return;
+      }
+      
+      loadBlogPosts();
+      loadDocuments();
       setLoading(false);
     }
-  };
+  }, [user, authLoading, isAdmin, navigate, toast]);
 
   const loadBlogPosts = async () => {
     try {
@@ -82,7 +92,7 @@ const AdminDashboard = () => {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    await signOut();
     navigate('/');
   };
 
@@ -119,13 +129,70 @@ const AdminDashboard = () => {
     }
   };
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p>Caricamento...</p>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto"></div>
+          <p className="text-muted-foreground">Loading dashboard...</p>
         </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <AlertTriangle className="h-5 w-5 text-destructive" />
+              <span>Authentication Required</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Alert>
+              <AlertDescription>
+                Please sign in to access the admin dashboard.
+              </AlertDescription>
+            </Alert>
+            <div className="mt-4 space-y-2">
+              <Button className="w-full" asChild>
+                <a href="/auth">Sign In</a>
+              </Button>
+              <Button variant="outline" className="w-full" asChild>
+                <a href="/">Back to Home</a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (!isAdmin()) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Shield className="h-5 w-5 text-destructive" />
+              <span>Access Denied</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Alert variant="destructive">
+              <AlertDescription>
+                You don't have permission to access the admin dashboard. Please contact an administrator.
+              </AlertDescription>
+            </Alert>
+            <div className="mt-4">
+              <Button variant="outline" className="w-full" asChild>
+                <a href="/">Back to Home</a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     );
   }

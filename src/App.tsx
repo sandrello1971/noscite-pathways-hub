@@ -10,6 +10,7 @@ import Percorsi from "./pages/Percorsi";
 import Risorse from "./pages/Risorse";
 import Contatti from "./pages/Contatti";
 import AdminDashboard from "./pages/AdminDashboard";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/risorse" element={<Risorse />} />
           <Route path="/contatti" element={<Contatti />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/auth" element={<Auth />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
