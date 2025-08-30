@@ -107,6 +107,8 @@ export default function NosciteAdminAuth() {
       }
 
       if (data.user) {
+        console.log('User logged in:', data.user.email);
+        
         // Check if user has admin role
         const { data: userRole, error: roleError } = await supabase
           .from('user_roles')
@@ -114,12 +116,16 @@ export default function NosciteAdminAuth() {
           .eq('user_id', data.user.id)
           .single();
 
+        console.log('User role check:', userRole, roleError);
+
         if (roleError || userRole?.role !== 'admin') {
+          console.log('Access denied - not admin');
           setError("Accesso negato. Non hai i permessi di amministratore.");
           await supabase.auth.signOut();
           return;
         }
 
+        console.log('Admin access granted, redirecting...');
         toast({
           title: "Accesso effettuato",
           description: "Benvenuto nell'area amministrazione!",
