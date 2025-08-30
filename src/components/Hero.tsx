@@ -4,8 +4,22 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="gradient-hero min-h-screen flex items-center pt-16">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      {/* Video Background */}
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/noscitelogo.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Overlay for text readability */}
+      <div className="absolute inset-0 bg-background/60 z-10"></div>
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8 animate-fade-in">
