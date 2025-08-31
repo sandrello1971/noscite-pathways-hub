@@ -14,6 +14,7 @@ export function useAuth() {
   const [session, setSession] = useState<Session | null>(null);
   const [userRole, setUserRole] = useState<'admin' | 'user' | null>(null);
   const [loading, setLoading] = useState(true);
+  const [roleLoading, setRoleLoading] = useState(false);
 
   useEffect(() => {
     // Get initial session
@@ -55,6 +56,7 @@ export function useAuth() {
   }, []);
 
   const fetchUserRole = async (userId: string) => {
+    setRoleLoading(true);
     try {
       console.log('Fetching role for user:', userId);
       
@@ -69,15 +71,16 @@ export function useAuth() {
       if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
         console.error('Error fetching user role:', error);
         setUserRole('user'); // Default to user role if error
-        return;
+      } else {
+        const role = data?.role || 'user';
+        console.log('Setting user role to:', role);
+        setUserRole(role);
       }
-
-      const role = data?.role || 'user';
-      console.log('Setting user role to:', role);
-      setUserRole(role);
     } catch (error) {
       console.error('Error fetching user role:', error);
       setUserRole('user'); // Default to user role
+    } finally {
+      setRoleLoading(false);
     }
   };
 
@@ -91,7 +94,7 @@ export function useAuth() {
     user,
     session,
     userRole,
-    loading,
+    loading: loading || roleLoading,
     isAdmin,
     signOut,
   };
