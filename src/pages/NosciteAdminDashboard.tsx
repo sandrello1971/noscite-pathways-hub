@@ -28,7 +28,7 @@ import DocumentManager from "@/components/DocumentManager";
 import UserManager from "@/components/UserManager";
 
 export default function NosciteAdminDashboard() {
-  const { user, loading: authLoading, isAdmin, signOut } = useAuth();
+  const { user, loading: authLoading, userRole, isAdmin, signOut } = useAuth();
   const [loading, setLoading] = useState(true);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [documents, setDocuments] = useState<Document[]>([]);
@@ -38,11 +38,20 @@ export default function NosciteAdminDashboard() {
   const { toast } = useToast();
 
   useEffect(() => {
-    console.log('Dashboard useEffect:', { authLoading, user: !!user, userRole: isAdmin() });
+    console.log('🎯 Dashboard useEffect triggered');
+    console.log('🔄 Auth state:', { 
+      authLoading, 
+      hasUser: !!user, 
+      userEmail: user?.email,
+      userRole: userRole,
+      isAdminCheck: isAdmin()
+    });
     
     if (!authLoading) {
+      console.log('📍 Auth loading completed');
+      
       if (!user) {
-        console.log('No user, redirecting to auth');
+        console.log('❌ No user found, redirecting to auth');
         toast({
           title: "Autenticazione Richiesta",
           description: "Effettua l'accesso per accedere all'area amministrazione.",
@@ -52,8 +61,11 @@ export default function NosciteAdminDashboard() {
         return;
       }
       
+      console.log('👤 User found:', user.email);
+      console.log('🔐 Checking admin permissions...');
+      
       if (!isAdmin()) {
-        console.log('User is not admin, redirecting to home');
+        console.log('🚫 User is not admin, current role:', userRole);
         toast({
           title: "Accesso Negato",
           description: "Non hai i permessi per accedere all'area amministrazione.",
@@ -63,12 +75,14 @@ export default function NosciteAdminDashboard() {
         return;
       }
       
-      console.log('User is admin, loading dashboard data');
+      console.log('✅ Admin access confirmed, loading dashboard data');
       loadBlogPosts();
       loadDocuments();
       setLoading(false);
+    } else {
+      console.log('⏳ Still loading auth state...');
     }
-  }, [user, authLoading, isAdmin, navigate, toast]);
+  }, [user, authLoading, userRole, isAdmin, navigate, toast]);
 
   const loadBlogPosts = async () => {
     try {

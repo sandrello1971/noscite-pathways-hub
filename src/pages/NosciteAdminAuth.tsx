@@ -107,7 +107,8 @@ export default function NosciteAdminAuth() {
       }
 
       if (data.user) {
-        console.log('User logged in:', data.user.email);
+        console.log('✅ User logged in successfully:', data.user.email);
+        console.log('🔍 Starting role check for user ID:', data.user.id);
         
         // Check if user has admin role
         const { data: userRole, error: roleError } = await supabase
@@ -116,20 +117,35 @@ export default function NosciteAdminAuth() {
           .eq('user_id', data.user.id)
           .single();
 
-        console.log('User role check:', userRole, roleError);
+        console.log('📋 Role query result:', { userRole, roleError });
 
-        if (roleError || userRole?.role !== 'admin') {
-          console.log('Access denied - not admin');
+        if (roleError) {
+          console.log('❌ Role error occurred:', roleError);
+          setError("Errore nel controllo dei permessi. Contatta l'amministratore.");
+          await supabase.auth.signOut();
+          return;
+        }
+
+        if (userRole?.role !== 'admin') {
+          console.log('🚫 Access denied - user role is:', userRole?.role);
           setError("Accesso negato. Non hai i permessi di amministratore.");
           await supabase.auth.signOut();
           return;
         }
 
-        console.log('Admin access granted, redirecting...');
+        console.log('✅ Admin access granted! Role:', userRole.role);
+        console.log('🔄 Attempting navigation to /nosciteadmin');
+        
         toast({
           title: "Accesso effettuato",
           description: "Benvenuto nell'area amministrazione!",
         });
+
+        // Small delay to ensure state updates
+        setTimeout(() => {
+          console.log('🚀 Navigating to dashboard...');
+          navigate("/nosciteadmin");
+        }, 100);
       }
     } catch (err) {
       setError("Si è verificato un errore imprevisto. Riprova più tardi.");
