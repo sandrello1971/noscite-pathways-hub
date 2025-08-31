@@ -277,7 +277,7 @@ export default function NosciteAdminDashboard() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
               <img 
-                src="/lovable-uploads/b5b25fd0-a304-47db-ada5-41413f8c2da0.png" 
+                src="/lovable-uploads/2282fb05-d65e-4f00-a180-d1fb3bee5bdb.png" 
                 alt="Noscite Logo" 
                 className="h-8 w-auto"
               />
