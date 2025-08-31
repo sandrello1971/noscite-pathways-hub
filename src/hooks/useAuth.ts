@@ -68,6 +68,7 @@ export function useAuth() {
 
       if (error && error.code !== 'PGRST116') { // PGRST116 = no rows returned
         console.error('Error fetching user role:', error);
+        setUserRole('user'); // Default to user role if error
         return;
       }
 

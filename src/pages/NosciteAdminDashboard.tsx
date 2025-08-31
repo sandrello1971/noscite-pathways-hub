@@ -38,8 +38,11 @@ export default function NosciteAdminDashboard() {
   const { toast } = useToast();
 
   useEffect(() => {
+    console.log('Dashboard useEffect:', { authLoading, user: !!user, userRole: isAdmin() });
+    
     if (!authLoading) {
       if (!user) {
+        console.log('No user, redirecting to auth');
         toast({
           title: "Autenticazione Richiesta",
           description: "Effettua l'accesso per accedere all'area amministrazione.",
@@ -50,6 +53,7 @@ export default function NosciteAdminDashboard() {
       }
       
       if (!isAdmin()) {
+        console.log('User is not admin, redirecting to home');
         toast({
           title: "Accesso Negato",
           description: "Non hai i permessi per accedere all'area amministrazione.",
@@ -59,6 +63,7 @@ export default function NosciteAdminDashboard() {
         return;
       }
       
+      console.log('User is admin, loading dashboard data');
       loadBlogPosts();
       loadDocuments();
       setLoading(false);
