@@ -25,6 +25,7 @@ export default function NosciteAdminAuth() {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
+        console.log("🔍 Found existing session, checking admin role...");
         // Check if user has admin role before redirecting
         const { data: userRole } = await supabase
           .from('user_roles')
@@ -32,36 +33,16 @@ export default function NosciteAdminAuth() {
           .eq('user_id', session.user.id)
           .single();
         
+        console.log("👤 User role check result:", userRole);
+        
         if (userRole?.role === 'admin') {
+          console.log("✅ Existing admin session found, redirecting...");
           navigate("/nosciteadmin");
         }
       }
     };
     
     checkUser();
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        if (session) {
-          // Check if user has admin role before redirecting
-          const { data: userRole } = await supabase
-            .from('user_roles')
-            .select('role')
-            .eq('user_id', session.user.id)
-            .single();
-          
-          if (userRole?.role === 'admin') {
-            navigate("/nosciteadmin");
-          } else {
-            setError("Accesso negato. Non hai i permessi di amministratore.");
-            await supabase.auth.signOut();
-          }
-        }
-      }
-    );
-
-    return () => subscription.unsubscribe();
   }, [navigate]);
 
   const validateEmail = (email: string) => {
@@ -141,11 +122,8 @@ export default function NosciteAdminAuth() {
           description: "Benvenuto nell'area amministrazione!",
         });
 
-        // Small delay to ensure state updates
-        setTimeout(() => {
-          console.log('🚀 Navigating to dashboard...');
-          navigate("/nosciteadmin");
-        }, 100);
+        // Navigate immediately
+        navigate("/nosciteadmin");
       }
     } catch (err) {
       setError("Si è verificato un errore imprevisto. Riprova più tardi.");
